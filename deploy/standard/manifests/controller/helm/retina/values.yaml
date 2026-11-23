@@ -148,6 +148,9 @@ securityContext:
     add:
       - SYS_ADMIN
       - NET_ADMIN # for packetparser plugin
+      # packetforward and dns open AF_PACKET sockets (utils.OpenRawSocket).
+      # Docker/containerd grant NET_RAW by default, CRI-O (OpenShift) does not.
+      - NET_RAW
       - IPC_LOCK # for mmap() calls made by NewReader(), ref: https://man7.org/linux/man-pages/man2/mmap.2.html
       - SYS_RESOURCE # for setting rlimit
   windowsOptions:
