@@ -193,6 +193,7 @@ func (translator *CaptureToPodTranslator) initJobTemplate(ctx context.Context, c
 				Spec: corev1.PodSpec{
 					HostNetwork:                   true,
 					HostIPC:                       true,
+					ServiceAccountName:            translator.config.CaptureServiceAccountName,
 					TerminationGracePeriodSeconds: &captureTerminationGracePeriodSeconds,
 					Containers: []corev1.Container{
 						{

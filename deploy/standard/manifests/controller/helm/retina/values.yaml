@@ -189,6 +189,14 @@ capture:
   # cannot influence the base. Leave empty to use the operator default
   # (/var/log/retina/captures).
   hostPathBaseDir: ""
+  # serviceAccount for the capture job pods. Leave name empty to keep the
+  # namespace default service account (current behavior). On OpenShift, set a
+  # dedicated account and bind the privileged SCC to it instead of 'default'.
+  serviceAccount:
+    name: ""
+    # create renders the ServiceAccount. Set to false if it is managed outside
+    # the chart.
+    create: true
   admissionPolicy:
     # enabled installs a ValidatingAdmissionPolicy (requires Kubernetes >= 1.30)
     # that only lets users holding the cluster-scoped 'capture-nodes' /

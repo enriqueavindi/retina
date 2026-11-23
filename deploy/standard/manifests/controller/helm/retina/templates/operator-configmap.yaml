@@ -14,6 +14,9 @@ data:
 {{- with .Values.capture.hostPathBaseDir }}
     captureHostPathBaseDir: {{ . | quote }}
 {{- end }}
+{{- with .Values.capture.serviceAccount.name }}
+    captureServiceAccountName: {{ . | quote }}
+{{- end }}
     enableManagedStorageAccount: {{ .Values.capture.enableManagedStorageAccount }}
     telemetryInterval: {{ .Values.operator.telemetryInterval }}
 {{- if .Values.capture.enableManagedStorageAccount }}

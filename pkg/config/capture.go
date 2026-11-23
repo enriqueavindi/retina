@@ -35,4 +35,11 @@ type CaptureConfig struct {
 	// place artifacts anywhere else on the node filesystem.
 	// If unset, the operator defaults to /var/log/retina/captures.
 	CaptureHostPathBaseDir string `yaml:"captureHostPathBaseDir"`
+
+	// CaptureServiceAccountName is the service account capture job pods run as.
+	// If unset, the pods run as the namespace default service account, which is
+	// what the operator did before this setting existed. Set it on clusters where
+	// the pod security policy has to be bound to a named account instead of
+	// 'default' (e.g. the privileged SCC on OpenShift).
+	CaptureServiceAccountName string `yaml:"captureServiceAccountName"`
 }
